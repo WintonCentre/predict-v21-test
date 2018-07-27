@@ -4,7 +4,7 @@
 
 A test environment for the Predictv2.1 model written in clojurescript.
 
-The clojurescript model is tested against the R model. The key idea is that we generate --n-- (where --n-- can
+The clojurescript model is tested against the R model. The key idea is that we generate -n- (where -n- can
 be large) random samples of valid parameters for the R model. We then feed these parameters into
 both the reference R code, and the reimplementation in clojurescript that runs on the web. We then check
 that the results tables are equal to within the tolerance of floating point representations.
@@ -17,7 +17,7 @@ The prerequisites section list the repositories for the R code and the clojuresc
 We use test.check and clojure.spec to get good coverage of the parameter
 space. Clojure.spec is used to make the parameters conform to their valid ranges. Test.check uses an 
 algorithm that creates a tree of random parameter sets - the simplest (usually lowest) parameter values
-appear more often at the root of the tree, and as --n-- grows, so the more complex (larger) parameters 
+appear more often at the root of the tree, and as -n- grows, so the more complex (larger) parameters 
 are chosen. If an error occurs, the algorithm uses this tree to determine the simplest (lowest) set of
 parameters which still exhibit the error. This can be useful in identifying the cause of the error by
 isolating a single input parameter that triggers it.
