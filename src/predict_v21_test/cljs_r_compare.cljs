@@ -118,7 +118,7 @@
 
 (s/fdef compare-model1-model2
         :args (s/cat :inputs (s/spec ::inputs))
-        :ret ::models.compare-models/pair
+        :ret :predict-v21-test.compare-models/pair
         :fn #(every? true? (deep-epsilon-compare (:ret %))))
 
 (defn check-models

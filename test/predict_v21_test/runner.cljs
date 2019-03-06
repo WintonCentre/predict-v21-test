@@ -20,4 +20,4 @@
         (println "smallest " (conform-inputs (first smallest)))))
     (is (true? (:success result)) "quickcheck style comparison test js/cljs")))
 
-(run-tests 'models.runner)
+(run-tests 'predict-v21-test.runner)
