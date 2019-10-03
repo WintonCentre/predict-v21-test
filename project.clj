@@ -3,8 +3,11 @@
   :url "http://example.com/FIXME"
   :license {:name "Eclipse Public License"
             :url "http://www.eclipse.org/legal/epl-v10.html"}
-  :dependencies [[org.clojure/clojure "1.9.0"]
-                 [org.clojure/clojurescript "1.10.238"]
+  :dependencies [
+                 [org.clojure/clojure "1.9.0"]
+                 ;[org.clojure/clojurescript "1.10.238"]
+                 ;[org.clojure/clojure "1.10.1"]
+                 [org.clojure/clojurescript "1.10.520"]
                  [org.clojure/core.async "0.4.474"]
                  [org.clojure/test.check "0.10.0-alpha2"]
                  [com.rpl/specter "1.1.0"]
@@ -12,12 +15,14 @@
                  [predict-model "2.1.3"]
                  [predict-r-model "0.1.0"]
                  [funcool/promesa "1.9.0"]
-                 [figwheel-sidecar "0.5.16"]]
+                 [figwheel-sidecar "0.5.18"]]
   :jvm-opts ["-Xmx1g"]
 
   :plugins [[lein-cljsbuild "1.1.7" :exclusions [[org.clojure/clojure]]]
             [lein-ancient "0.6.15"]
-            [lein-doo "0.1.8"]]
+            [lein-doo "0.1.8"]
+            [lein-figwheel "0.5.13"]
+            ]
 
   :source-paths ["src"]
 
@@ -84,8 +89,8 @@
 
    }
 
-  :profiles {:dev {:dependencies [[figwheel-sidecar "0.5.16-SNAPSHOT"]
-                                  [com.cemerick/piggieback "0.2.2"]]
+  :profiles {:dev {:dependencies [[figwheel-sidecar "0.5.19-SNAPSHOT"]
+                                  [cider/piggieback "0.4.1"]]
                    :source-paths ["src" "dev"]
-                   :repl-options {:nrepl-middleware [cemerick.piggieback/wrap-cljs-repl]}}})
+                   :repl-options {:nrepl-middleware [cider.piggieback/wrap-cljs-repl]}}})
 

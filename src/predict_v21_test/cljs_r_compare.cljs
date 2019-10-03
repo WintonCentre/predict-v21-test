@@ -1,9 +1,11 @@
 (ns predict-v21-test.cljs-r-compare
   (:require
     [cljs.test :refer-macros [deftest is testing run-tests]]
+    [clojure.test.check]
     [clojure.test.check.generators :as gen]
     [clojure.spec.alpha :as s]
     [clojure.spec.test.alpha :as st]
+    [clojure.test.check.properties]
     [predict-v21-test.compare-models :refer [compare-models deep-epsilon-compare]]
     [predict.models.r.predict  :refer [r-predict]]
     [predict.models.predict :refer [cljs-predict]]
@@ -107,6 +109,34 @@
 (defn model1 [inputs] (select-comparison-keys (fix-r-model-keys
                                           (js->clj (r-predict inputs) :keywordize-keys true) inputs)))
 
+(comment
+  (def inputs (first (generate-inputs 1)))
+  (print inputs)
+  (r-predict inputs)
+
+  (compare-model1-model2 inputs)
+
+  (map model1 (generate-inputs 100))                          ; r-model, eval timed out
+  (map model2 (generate-inputs 5))
+  (compare-model1-model2 (first (generate-inputs 5)))
+  (map compare-model1-model2 (generate-inputs 5))
+
+  (st/instrument `compare-model1-model2)
+  (st/check `compare-model1-model2 {:clojure.test.check/opts {:num-tests 1}})
+
+  (dotimes [i 10]
+    (st/check `compare-model1-model2 {:clojure.test.check/opts {:num-tests 1}})
+    )
+
+  (dotimes [i 10]
+    (def inputs (first (generate-inputs 1)))
+    (print inputs)
+    (r-predict inputs)
+    (print "")
+    (print "")
+    )
+  )
+
 (defn model2 [inputs] (select-comparison-keys
                         (into {}
                               (map (fn [[key value]] {key (into [] (map #(* 100 %) (drop 1 value)))})
@@ -118,7 +148,7 @@
 
 (s/fdef compare-model1-model2
         :args (s/cat :inputs (s/spec ::inputs))
-        :ret ::models.compare-models/pair
+        :ret :predict-v21-test.compare-models/pair
         :fn #(every? true? (deep-epsilon-compare (:ret %))))
 
 (defn check-models
