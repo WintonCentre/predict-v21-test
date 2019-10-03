@@ -5,9 +5,9 @@
             :url "http://www.eclipse.org/legal/epl-v10.html"}
   :dependencies [
                  [org.clojure/clojure "1.9.0"]
-                 ;[org.clojure/clojurescript "1.10.238"]
+                 [org.clojure/clojurescript "1.10.238"]     ; This breaks. Maybe node issue?
                  ;[org.clojure/clojure "1.10.1"]
-                 [org.clojure/clojurescript "1.10.520"]
+                 ;[org.clojure/clojurescript "1.10.520"]
                  [org.clojure/core.async "0.4.474"]
                  [org.clojure/test.check "0.10.0-alpha2"]
                  [com.rpl/specter "1.1.0"]
