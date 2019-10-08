@@ -14,6 +14,7 @@
                  [cljs-ajax "0.7.3"]
                  [predict-model "2.1.3"]
                  [predict-r-model "0.1.0"]
+                 ;[predict-r-model "0.1.1"]
                  [funcool/promesa "1.9.0"]
                  [figwheel-sidecar "0.5.18"]]
   :jvm-opts ["-Xmx1g"]

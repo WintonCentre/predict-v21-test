@@ -11,5 +11,6 @@ pom.xml.asc
 .hg/
 .idea
 node_modules
+.DS_Store
 
 figwheel_server.log

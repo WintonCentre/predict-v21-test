@@ -8,6 +8,7 @@
     [clojure.test.check.properties]
     [predict-v21-test.compare-models :refer [compare-models deep-epsilon-compare]]
     [predict.models.r.predict  :refer [r-predict]]
+    ;[predict-v21-test.predict_r_local  :refer [r-predict]]
     [predict.models.predict :refer [cljs-predict]]
     )
   )
