@@ -30,7 +30,8 @@
 (s/def ::bis #{0 1})
 (s/def ::bis? #{1})
 
-(def gen-size 1000)
+;(def gen-size 1000)
+(def gen-size 2)
 
 (defn generate-inputs
   "Generate n randomised inputs"
@@ -114,6 +115,11 @@
   (def inputs (first (generate-inputs 1)))
   (print inputs)
   (r-predict inputs)
+
+
+  (defn model1 [inputs] (select-comparison-keys (fix-r-model-keys
+                                                  (js->clj (r-predict inputs) :keywordize-keys true) inputs)))
+
 
   (compare-model1-model2 inputs)
 

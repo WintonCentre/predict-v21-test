@@ -1,6 +1,4 @@
 #!/usr/bin/env Rscript --default-packages=jsonlite
-print("====================================")
-print("Start of script")
 json_args <- commandArgs(TRUE);
 
 # extract args from the JSON key:value pairs and create globalenv vars named
@@ -36,6 +34,7 @@ source("/Users/jin/Workspace/PredictBreast_Testing/predict-v21-test/tempdebug/Pr
 # return only benefits2.1
 print(toJSON(digits=14,
              list(benefits2.1 = data.frame(benefits2.1),
+                  benefits2.1.10 = data.frame(benefits2.1.10),
                   inputs = data.frame(age.start,
                                       screen,
                                       size,
@@ -51,11 +50,11 @@ print(toJSON(digits=14,
                                       r.enabled))))
 
 # return only benefits2.1.10, need extended hormones
-print("")
-print("New extended hormones data")
-print(toJSON(digits=14,
-             list(benefits2.1.10 = data.frame(benefits2.1.10)
-                  )))
-print("Finished a script run")
+#print("")
+#print("New extended hormones data")
+#print(toJSON(digits=14,
+#             list(benefits2.1.10 = data.frame(benefits2.1.10)
+#                  )))
+#print("Finished a script run")
 
 # /Users/jin/Workspace/PredictBreast_Testing/predict-v21-test/tempdebug/predict_r.sh "{\"generation\":0,\"bis\":1,\"screen\":1,\"er\":1,\"radio\":0,\"bis?\":1,\"ki67\":9,\"size\":0,\"nodes\":9,\"grade\":2,\"age.start\":28,\"traz\":0,\"rtime\":15,\"her2\":0,\"r.enabled\":0,\"horm\":0}"
